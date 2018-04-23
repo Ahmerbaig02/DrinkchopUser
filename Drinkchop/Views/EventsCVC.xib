@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="EventsCVC" customModule="Drinkchop" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barImg" translatesAutoresizingMaskIntoConstraints="NO" id="4Qb-Yy-vbV">
+                        <rect key="frame" x="8" y="8" width="70" height="70"/>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4Qb-Yy-vbV" secondAttribute="height" multiplier="1:1" id="EhX-pS-gcF"/>
+                            <constraint firstAttribute="height" constant="70" id="Iad-lc-2rc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkc-w0-RDR">
+                        <rect key="frame" x="88" y="8" width="105.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Pef-LT-qlV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="cpb-Xt-KJ8">
+                        <rect key="frame" x="86" y="32" width="206" height="46"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00pm - 2:00am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGw-X3-AbO">
+                        <rect key="frame" x="203.5" y="8" width="88.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="DGw-X3-AbO" secondAttribute="height" multiplier="22:5" id="IHj-TC-mhO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="DGw-X3-AbO" firstAttribute="leading" secondItem="Qkc-w0-RDR" secondAttribute="trailing" constant="10" id="4Bb-xz-v7t"/>
+                <constraint firstItem="4Qb-Yy-vbV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="C4v-qc-A6v"/>
+                <constraint firstItem="Qkc-w0-RDR" firstAttribute="top" secondItem="4Qb-Yy-vbV" secondAttribute="top" id="DWA-kQ-6yU"/>
+                <constraint firstItem="4Qb-Yy-vbV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="EMN-bN-X6P"/>
+                <constraint firstAttribute="trailing" secondItem="cpb-Xt-KJ8" secondAttribute="trailing" constant="8" id="Ff0-sP-drJ"/>
+                <constraint firstItem="cpb-Xt-KJ8" firstAttribute="bottom" secondItem="4Qb-Yy-vbV" secondAttribute="bottom" id="Qvp-KN-1E3"/>
+                <constraint firstAttribute="trailing" secondItem="DGw-X3-AbO" secondAttribute="trailing" constant="8" id="cVW-ey-jd2"/>
+                <constraint firstItem="Qkc-w0-RDR" firstAttribute="leading" secondItem="4Qb-Yy-vbV" secondAttribute="trailing" constant="10" id="eT0-Cj-hSE"/>
+                <constraint firstItem="cpb-Xt-KJ8" firstAttribute="top" secondItem="Qkc-w0-RDR" secondAttribute="bottom" constant="4" id="leB-Sk-wiE"/>
+                <constraint firstItem="DGw-X3-AbO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="xOx-99-tjN"/>
+                <constraint firstItem="cpb-Xt-KJ8" firstAttribute="leading" secondItem="4Qb-Yy-vbV" secondAttribute="trailing" constant="8" id="z6m-mO-XMX"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="eventImgView" destination="4Qb-Yy-vbV" id="HCc-wL-b4U"/>
+                <outlet property="eventInfoLbl" destination="cpb-Xt-KJ8" id="fB1-FS-9uE"/>
+                <outlet property="nameLbl" destination="Qkc-w0-RDR" id="LJf-mz-7ZE"/>
+                <outlet property="timingLbl" destination="DGw-X3-AbO" id="ReH-k5-rxK"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="barImg" width="275" height="183"/>
+    </resources>
+</document>

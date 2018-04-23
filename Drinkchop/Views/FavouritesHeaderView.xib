@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="FavouritesHeaderView" customModule="Drinkchop" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drinks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yv-qa-fOc">
+                    <rect key="frame" x="16" y="4" width="46" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0NA-hY-Wbs">
+                    <rect key="frame" x="0.0" y="29" width="300" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="zGc-jf-Q5S"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_drop_down" translatesAutoresizingMaskIntoConstraints="NO" id="PhY-NT-a6d">
+                    <rect key="frame" x="268" y="3" width="24" height="24"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PhY-NT-a6d" secondAttribute="height" multiplier="1:1" id="8Ge-Zh-Dxc"/>
+                        <constraint firstAttribute="height" constant="24" id="em0-AC-3bf"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="PhY-NT-a6d" firstAttribute="centerY" secondItem="VXr-Tz-HHm" secondAttribute="centerY" id="3L8-ao-Iz8"/>
+                <constraint firstItem="0NA-hY-Wbs" firstAttribute="top" secondItem="2yv-qa-fOc" secondAttribute="bottom" constant="4" id="8RS-k8-2S7"/>
+                <constraint firstItem="2yv-qa-fOc" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="16" id="BjJ-t6-p4T"/>
+                <constraint firstItem="0NA-hY-Wbs" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="I4h-bK-sPG"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="0NA-hY-Wbs" secondAttribute="trailing" id="KdD-8h-9gL"/>
+                <constraint firstAttribute="trailing" secondItem="PhY-NT-a6d" secondAttribute="trailing" constant="8" id="QaH-YX-5r0"/>
+                <constraint firstItem="2yv-qa-fOc" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" constant="4" id="jgG-U5-LcK"/>
+                <constraint firstAttribute="bottom" secondItem="0NA-hY-Wbs" secondAttribute="bottom" id="vWh-no-M6b"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="infoLbl" destination="2yv-qa-fOc" id="nVn-zr-fOC"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ic_arrow_drop_down" width="24" height="24"/>
+    </resources>
+</document>

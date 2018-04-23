@@ -1,0 +1,13 @@
+//
+//  Use this file to import your target's public headers that you would like to expose to Swift.
+//
+
+#ifndef Bridge_header_h
+
+#define Bridge_header_h
+
+#import "TextFieldValidator.h"
+
+//#import <FirebaseMessaging/FirebaseMessaging.h>
+
+#endif /* Bridge_header_h */

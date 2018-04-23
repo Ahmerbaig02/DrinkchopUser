@@ -8,12 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		87CD784E208B884100290E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD784D208B884100290E3F /* AppDelegate.swift */; };
-		87CD7850208B884100290E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD784F208B884100290E3F /* ViewController.swift */; };
 		87CD7853208B884100290E3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7851208B884100290E3F /* Main.storyboard */; };
 		87CD7855208B884200290E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7854208B884200290E3F /* Assets.xcassets */; };
 		87CD7858208B884200290E3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7856208B884200290E3F /* LaunchScreen.storyboard */; };
 		87CD7863208B884200290E3F /* DrinkchopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7862208B884200290E3F /* DrinkchopTests.swift */; };
 		87CD786E208B884200290E3F /* DrinkchopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD786D208B884200290E3F /* DrinkchopUITests.swift */; };
+		87CD78BF208CAEA900290E3F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78BC208CAEA800290E3F /* Helper.swift */; };
+		87CD78C0208CAEA900290E3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78BD208CAEA800290E3F /* Extensions.swift */; };
+		87CD78C1208CAEA900290E3F /* AlamofireRequestFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78BE208CAEA900290E3F /* AlamofireRequestFetch.swift */; };
+		87CD78C4208CAEC300290E3F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78C3208CAEC300290E3F /* Manager.swift */; };
+		87CD78C6208CB19600290E3F /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78C5208CB19600290E3F /* SplashVC.swift */; };
+		87CD78C8208CB19F00290E3F /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78C7208CB19F00290E3F /* SigninVC.swift */; };
+		87CD78CA208CB1A700290E3F /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78C9208CB1A700290E3F /* SignupVC.swift */; };
+		87CD78CF208CB67E00290E3F /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78CE208CB67E00290E3F /* TextFieldValidator.m */; };
+		87CD78D1208CB8B000290E3F /* ForgotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78D0208CB8B000290E3F /* ForgotVC.swift */; };
+		87CD78D3208CC8A900290E3F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78D2208CC8A800290E3F /* MapViewController.swift */; };
+		87CD78D8208CC8EA00290E3F /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78D5208CC8E800290E3F /* KYEmbedMainControllerSegue.swift */; };
+		87CD78D9208CC8EA00290E3F /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78D6208CC8E900290E3F /* KYDrawerController.swift */; };
+		87CD78DA208CC8EA00290E3F /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78D7208CC8E900290E3F /* KYEmbedDrawerControllerSegue.swift */; };
+		87CD78DD208CCDC800290E3F /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78DB208CCDC700290E3F /* Maps.swift */; };
+		87CD78DE208CCDC800290E3F /* Custom Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78DC208CCDC700290E3F /* Custom Functions.swift */; };
+		87CD78E1208CD35B00290E3F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78E0208CD35B00290E3F /* MenuView.swift */; };
+		87CD78E3208CDC4200290E3F /* CardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78E2208CDC4200290E3F /* CardsVC.swift */; };
+		87CD78E6208CDCFC00290E3F /* AddCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78E4208CDCFC00290E3F /* AddCardCVC.swift */; };
+		87CD78E7208CDCFC00290E3F /* AddCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD78E5208CDCFC00290E3F /* AddCardCVC.xib */; };
+		87CD78EA208CE07C00290E3F /* CardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78E8208CE07C00290E3F /* CardCVC.swift */; };
+		87CD78EB208CE07C00290E3F /* CardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD78E9208CE07C00290E3F /* CardCVC.xib */; };
+		87CD78ED208CE5E500290E3F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78EC208CE5E500290E3F /* SettingsVC.swift */; };
+		87CD78EF208D0C1600290E3F /* CoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78EE208D0C1600290E3F /* CoverVC.swift */; };
+		87CD78F1208D153C00290E3F /* SelectedCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78F0208D153C00290E3F /* SelectedCardVC.swift */; };
+		87CD78F3208D1E6000290E3F /* MyAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78F2208D1E6000290E3F /* MyAccountVC.swift */; };
+		87CD78F6208D2AA600290E3F /* AccountCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78F4208D2AA600290E3F /* AccountCVC.swift */; };
+		87CD78F7208D2AA700290E3F /* AccountCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD78F5208D2AA600290E3F /* AccountCVC.xib */; };
+		87CD78F9208D2F3F00290E3F /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78F8208D2F3F00290E3F /* FavouritesVC.swift */; };
+		87CD78FC208D2F4F00290E3F /* DrinkCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78FA208D2F4F00290E3F /* DrinkCVC.swift */; };
+		87CD78FD208D2F4F00290E3F /* DrinkCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD78FB208D2F4F00290E3F /* DrinkCVC.xib */; };
+		87CD7900208D2F6A00290E3F /* HappyHourCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD78FE208D2F6A00290E3F /* HappyHourCVC.swift */; };
+		87CD7901208D2F6A00290E3F /* HappyHourCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD78FF208D2F6A00290E3F /* HappyHourCVC.xib */; };
+		87CD7904208D37C900290E3F /* FavouritesFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7902208D37C900290E3F /* FavouritesFooterView.swift */; };
+		87CD7905208D37C900290E3F /* FavouritesFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7903208D37C900290E3F /* FavouritesFooterView.xib */; };
+		87CD7908208D37D700290E3F /* FavouritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7906208D37D700290E3F /* FavouritesHeaderView.swift */; };
+		87CD7909208D37D700290E3F /* FavouritesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7907208D37D700290E3F /* FavouritesHeaderView.xib */; };
+		87CD790C208D977600290E3F /* HyveDrinkCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD790A208D977600290E3F /* HyveDrinkCVC.swift */; };
+		87CD790D208D977600290E3F /* HyveDrinkCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD790B208D977600290E3F /* HyveDrinkCVC.xib */; };
+		87CD790F208D994B00290E3F /* HyveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD790E208D994B00290E3F /* HyveVC.swift */; };
+		87CD7911208DA6A900290E3F /* PasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7910208DA6A900290E3F /* PasswordVC.swift */; };
+		87CD7913208DAEB400290E3F /* AllergyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7912208DAEB400290E3F /* AllergyVC.swift */; };
+		87CD7915208DB33B00290E3F /* BudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7914208DB33B00290E3F /* BudgetVC.swift */; };
+		87CD7918208DC6A400290E3F /* SearchDrinkCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7916208DC6A400290E3F /* SearchDrinkCVC.swift */; };
+		87CD7919208DC6A400290E3F /* SearchDrinkCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7917208DC6A400290E3F /* SearchDrinkCVC.xib */; };
+		87CD791B208DCA2800290E3F /* FindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD791A208DCA2800290E3F /* FindVC.swift */; };
+		87CD791D208DD30100290E3F /* SelectedBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD791C208DD30100290E3F /* SelectedBarVC.swift */; };
+		87CD7920208DF42200290E3F /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD791E208DF42200290E3F /* EventsCVC.swift */; };
+		87CD7921208DF42200290E3F /* EventsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD791F208DF42200290E3F /* EventsCVC.xib */; };
+		87CD7923208DF74800290E3F /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7922208DF74800290E3F /* EventsVC.swift */; };
+		87CD7926208E313900290E3F /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7924208E313900290E3F /* OrdersTVC.swift */; };
+		87CD7927208E313900290E3F /* OrdersTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CD7925208E313900290E3F /* OrdersTVC.xib */; };
+		87CD7929208E31EC00290E3F /* MyOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD7928208E31EC00290E3F /* MyOrdersVC.swift */; };
+		CE1E4BFFFB2E37050565BDFB /* Pods_Drinkchop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16483D8067962D0C09253202 /* Pods_Drinkchop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +86,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16483D8067962D0C09253202 /* Pods_Drinkchop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Drinkchop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D234F315892DE583B434BE9 /* Pods-Drinkchop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drinkchop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drinkchop/Pods-Drinkchop.release.xcconfig"; sourceTree = "<group>"; };
+		81CB308D64586AF041792CD1 /* Pods-Drinkchop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drinkchop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drinkchop/Pods-Drinkchop.debug.xcconfig"; sourceTree = "<group>"; };
 		87CD784A208B884100290E3F /* Drinkchop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkchop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87CD784D208B884100290E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87CD784F208B884100290E3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		87CD7852208B884100290E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87CD7854208B884200290E3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87CD7857208B884200290E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +101,60 @@
 		87CD7869208B884200290E3F /* DrinkchopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinkchopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87CD786D208B884200290E3F /* DrinkchopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkchopUITests.swift; sourceTree = "<group>"; };
 		87CD786F208B884200290E3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87CD78BC208CAEA800290E3F /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		87CD78BD208CAEA800290E3F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		87CD78BE208CAEA900290E3F /* AlamofireRequestFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRequestFetch.swift; sourceTree = "<group>"; };
+		87CD78C3208CAEC300290E3F /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		87CD78C5208CB19600290E3F /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		87CD78C7208CB19F00290E3F /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
+		87CD78C9208CB1A700290E3F /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		87CD78CC208CB67C00290E3F /* Drinkchop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drinkchop-Bridging-Header.h"; sourceTree = "<group>"; };
+		87CD78CD208CB67D00290E3F /* TextFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldValidator.h; sourceTree = "<group>"; };
+		87CD78CE208CB67E00290E3F /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldValidator.m; sourceTree = "<group>"; };
+		87CD78D0208CB8B000290E3F /* ForgotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotVC.swift; sourceTree = "<group>"; };
+		87CD78D2208CC8A800290E3F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		87CD78D5208CC8E800290E3F /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
+		87CD78D6208CC8E900290E3F /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
+		87CD78D7208CC8E900290E3F /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
+		87CD78DB208CCDC700290E3F /* Maps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
+		87CD78DC208CCDC700290E3F /* Custom Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Custom Functions.swift"; sourceTree = "<group>"; };
+		87CD78E0208CD35B00290E3F /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		87CD78E2208CDC4200290E3F /* CardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsVC.swift; sourceTree = "<group>"; };
+		87CD78E4208CDCFC00290E3F /* AddCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardCVC.swift; sourceTree = "<group>"; };
+		87CD78E5208CDCFC00290E3F /* AddCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardCVC.xib; sourceTree = "<group>"; };
+		87CD78E8208CE07C00290E3F /* CardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCVC.swift; sourceTree = "<group>"; };
+		87CD78E9208CE07C00290E3F /* CardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCVC.xib; sourceTree = "<group>"; };
+		87CD78EC208CE5E500290E3F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		87CD78EE208D0C1600290E3F /* CoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverVC.swift; sourceTree = "<group>"; };
+		87CD78F0208D153C00290E3F /* SelectedCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCardVC.swift; sourceTree = "<group>"; };
+		87CD78F2208D1E6000290E3F /* MyAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountVC.swift; sourceTree = "<group>"; };
+		87CD78F4208D2AA600290E3F /* AccountCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCVC.swift; sourceTree = "<group>"; };
+		87CD78F5208D2AA600290E3F /* AccountCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCVC.xib; sourceTree = "<group>"; };
+		87CD78F8208D2F3F00290E3F /* FavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
+		87CD78FA208D2F4F00290E3F /* DrinkCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCVC.swift; sourceTree = "<group>"; };
+		87CD78FB208D2F4F00290E3F /* DrinkCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrinkCVC.xib; sourceTree = "<group>"; };
+		87CD78FE208D2F6A00290E3F /* HappyHourCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyHourCVC.swift; sourceTree = "<group>"; };
+		87CD78FF208D2F6A00290E3F /* HappyHourCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HappyHourCVC.xib; sourceTree = "<group>"; };
+		87CD7902208D37C900290E3F /* FavouritesFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesFooterView.swift; sourceTree = "<group>"; };
+		87CD7903208D37C900290E3F /* FavouritesFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesFooterView.xib; sourceTree = "<group>"; };
+		87CD7906208D37D700290E3F /* FavouritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesHeaderView.swift; sourceTree = "<group>"; };
+		87CD7907208D37D700290E3F /* FavouritesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesHeaderView.xib; sourceTree = "<group>"; };
+		87CD790A208D977600290E3F /* HyveDrinkCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyveDrinkCVC.swift; sourceTree = "<group>"; };
+		87CD790B208D977600290E3F /* HyveDrinkCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HyveDrinkCVC.xib; sourceTree = "<group>"; };
+		87CD790E208D994B00290E3F /* HyveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyveVC.swift; sourceTree = "<group>"; };
+		87CD7910208DA6A900290E3F /* PasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVC.swift; sourceTree = "<group>"; };
+		87CD7912208DAEB400290E3F /* AllergyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyVC.swift; sourceTree = "<group>"; };
+		87CD7914208DB33B00290E3F /* BudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetVC.swift; sourceTree = "<group>"; };
+		87CD7916208DC6A400290E3F /* SearchDrinkCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDrinkCVC.swift; sourceTree = "<group>"; };
+		87CD7917208DC6A400290E3F /* SearchDrinkCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDrinkCVC.xib; sourceTree = "<group>"; };
+		87CD791A208DCA2800290E3F /* FindVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindVC.swift; sourceTree = "<group>"; };
+		87CD791C208DD30100290E3F /* SelectedBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedBarVC.swift; sourceTree = "<group>"; };
+		87CD791E208DF42200290E3F /* EventsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCVC.swift; sourceTree = "<group>"; };
+		87CD791F208DF42200290E3F /* EventsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsCVC.xib; sourceTree = "<group>"; };
+		87CD7922208DF74800290E3F /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		87CD7924208E313900290E3F /* OrdersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
+		87CD7925208E313900290E3F /* OrdersTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTVC.xib; sourceTree = "<group>"; };
+		87CD7928208E31EC00290E3F /* MyOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1E4BFFFB2E37050565BDFB /* Pods_Drinkchop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +183,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0185C8C710176FF1F0B556B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81CB308D64586AF041792CD1 /* Pods-Drinkchop.debug.xcconfig */,
+				1D234F315892DE583B434BE9 /* Pods-Drinkchop.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		87CD7841208B884100290E3F = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +199,8 @@
 				87CD7861208B884200290E3F /* DrinkchopTests */,
 				87CD786C208B884200290E3F /* DrinkchopUITests */,
 				87CD784B208B884100290E3F /* Products */,
+				0185C8C710176FF1F0B556B1 /* Pods */,
+				E69A4BCCC5D971C06DE12C3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,10 +218,17 @@
 			isa = PBXGroup;
 			children = (
 				87CD784D208B884100290E3F /* AppDelegate.swift */,
-				87CD784F208B884100290E3F /* ViewController.swift */,
-				87CD7851208B884100290E3F /* Main.storyboard */,
+				87CD78DF208CD35300290E3F /* Menu */,
+				87CD78D4208CC8DB00290E3F /* KY Drawer Controller */,
+				87CD78CB208CB67200290E3F /* TextField Validator */,
+				87CD78C2208CAEAF00290E3F /* Helper */,
+				87CD78BB208CAD4800290E3F /* Storyboard files */,
+				87CD78B9208CAD3300290E3F /* Views */,
+				87CD78B8208CAD2B00290E3F /* Custom Classes */,
+				87CD78B7208CAD2600290E3F /* Manager */,
+				87CD78B6208CAD2000290E3F /* Models */,
+				87CD78B5208CAD1A00290E3F /* Controllers */,
 				87CD7854208B884200290E3F /* Assets.xcassets */,
-				87CD7856208B884200290E3F /* LaunchScreen.storyboard */,
 				87CD7859208B884200290E3F /* Info.plist */,
 			);
 			path = Drinkchop;
@@ -125,6 +252,140 @@
 			path = DrinkchopUITests;
 			sourceTree = "<group>";
 		};
+		87CD78B5208CAD1A00290E3F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78D2208CC8A800290E3F /* MapViewController.swift */,
+				87CD78C5208CB19600290E3F /* SplashVC.swift */,
+				87CD78C7208CB19F00290E3F /* SigninVC.swift */,
+				87CD78C9208CB1A700290E3F /* SignupVC.swift */,
+				87CD78D0208CB8B000290E3F /* ForgotVC.swift */,
+				87CD78E2208CDC4200290E3F /* CardsVC.swift */,
+				87CD78EC208CE5E500290E3F /* SettingsVC.swift */,
+				87CD78EE208D0C1600290E3F /* CoverVC.swift */,
+				87CD78F0208D153C00290E3F /* SelectedCardVC.swift */,
+				87CD78F2208D1E6000290E3F /* MyAccountVC.swift */,
+				87CD78F8208D2F3F00290E3F /* FavouritesVC.swift */,
+				87CD790E208D994B00290E3F /* HyveVC.swift */,
+				87CD7910208DA6A900290E3F /* PasswordVC.swift */,
+				87CD7912208DAEB400290E3F /* AllergyVC.swift */,
+				87CD7914208DB33B00290E3F /* BudgetVC.swift */,
+				87CD791A208DCA2800290E3F /* FindVC.swift */,
+				87CD791C208DD30100290E3F /* SelectedBarVC.swift */,
+				87CD7922208DF74800290E3F /* EventsVC.swift */,
+				87CD7928208E31EC00290E3F /* MyOrdersVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		87CD78B6208CAD2000290E3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		87CD78B7208CAD2600290E3F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78C3208CAEC300290E3F /* Manager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		87CD78B8208CAD2B00290E3F /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		87CD78B9208CAD3300290E3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78E4208CDCFC00290E3F /* AddCardCVC.swift */,
+				87CD78E5208CDCFC00290E3F /* AddCardCVC.xib */,
+				87CD78E8208CE07C00290E3F /* CardCVC.swift */,
+				87CD78E9208CE07C00290E3F /* CardCVC.xib */,
+				87CD78F4208D2AA600290E3F /* AccountCVC.swift */,
+				87CD78F5208D2AA600290E3F /* AccountCVC.xib */,
+				87CD78FA208D2F4F00290E3F /* DrinkCVC.swift */,
+				87CD78FB208D2F4F00290E3F /* DrinkCVC.xib */,
+				87CD78FE208D2F6A00290E3F /* HappyHourCVC.swift */,
+				87CD78FF208D2F6A00290E3F /* HappyHourCVC.xib */,
+				87CD7902208D37C900290E3F /* FavouritesFooterView.swift */,
+				87CD7903208D37C900290E3F /* FavouritesFooterView.xib */,
+				87CD7906208D37D700290E3F /* FavouritesHeaderView.swift */,
+				87CD7907208D37D700290E3F /* FavouritesHeaderView.xib */,
+				87CD790A208D977600290E3F /* HyveDrinkCVC.swift */,
+				87CD790B208D977600290E3F /* HyveDrinkCVC.xib */,
+				87CD7916208DC6A400290E3F /* SearchDrinkCVC.swift */,
+				87CD7917208DC6A400290E3F /* SearchDrinkCVC.xib */,
+				87CD791E208DF42200290E3F /* EventsCVC.swift */,
+				87CD791F208DF42200290E3F /* EventsCVC.xib */,
+				87CD7924208E313900290E3F /* OrdersTVC.swift */,
+				87CD7925208E313900290E3F /* OrdersTVC.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		87CD78BB208CAD4800290E3F /* Storyboard files */ = {
+			isa = PBXGroup;
+			children = (
+				87CD7851208B884100290E3F /* Main.storyboard */,
+				87CD7856208B884200290E3F /* LaunchScreen.storyboard */,
+			);
+			path = "Storyboard files";
+			sourceTree = "<group>";
+		};
+		87CD78C2208CAEAF00290E3F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78DC208CCDC700290E3F /* Custom Functions.swift */,
+				87CD78DB208CCDC700290E3F /* Maps.swift */,
+				87CD78BE208CAEA900290E3F /* AlamofireRequestFetch.swift */,
+				87CD78BD208CAEA800290E3F /* Extensions.swift */,
+				87CD78BC208CAEA800290E3F /* Helper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		87CD78CB208CB67200290E3F /* TextField Validator */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78CD208CB67D00290E3F /* TextFieldValidator.h */,
+				87CD78CE208CB67E00290E3F /* TextFieldValidator.m */,
+				87CD78CC208CB67C00290E3F /* Drinkchop-Bridging-Header.h */,
+			);
+			path = "TextField Validator";
+			sourceTree = "<group>";
+		};
+		87CD78D4208CC8DB00290E3F /* KY Drawer Controller */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78D6208CC8E900290E3F /* KYDrawerController.swift */,
+				87CD78D7208CC8E900290E3F /* KYEmbedDrawerControllerSegue.swift */,
+				87CD78D5208CC8E800290E3F /* KYEmbedMainControllerSegue.swift */,
+			);
+			path = "KY Drawer Controller";
+			sourceTree = "<group>";
+		};
+		87CD78DF208CD35300290E3F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				87CD78E0208CD35B00290E3F /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		E69A4BCCC5D971C06DE12C3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16483D8067962D0C09253202 /* Pods_Drinkchop.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +393,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87CD7872208B884200290E3F /* Build configuration list for PBXNativeTarget "Drinkchop" */;
 			buildPhases = (
+				7ABA32B319F87FAF07D988C6 /* [CP] Check Pods Manifest.lock */,
 				87CD7846208B884100290E3F /* Sources */,
 				87CD7847208B884100290E3F /* Frameworks */,
 				87CD7848208B884100290E3F /* Resources */,
+				EF34548B57B65CAB8EF3826A /* [CP] Embed Pods Frameworks */,
+				563514BF55526F9EA206D5D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +457,7 @@
 				TargetAttributes = {
 					87CD7849208B884100290E3F = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					87CD785D208B884200290E3F = {
 						CreatedOnToolsVersion = 9.3;
@@ -230,8 +495,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				87CD7858208B884200290E3F /* LaunchScreen.storyboard in Resources */,
+				87CD7909208D37D700290E3F /* FavouritesHeaderView.xib in Resources */,
+				87CD790D208D977600290E3F /* HyveDrinkCVC.xib in Resources */,
+				87CD7921208DF42200290E3F /* EventsCVC.xib in Resources */,
 				87CD7855208B884200290E3F /* Assets.xcassets in Resources */,
+				87CD7905208D37C900290E3F /* FavouritesFooterView.xib in Resources */,
+				87CD78F7208D2AA700290E3F /* AccountCVC.xib in Resources */,
+				87CD78EB208CE07C00290E3F /* CardCVC.xib in Resources */,
+				87CD78E7208CDCFC00290E3F /* AddCardCVC.xib in Resources */,
+				87CD7901208D2F6A00290E3F /* HappyHourCVC.xib in Resources */,
+				87CD7919208DC6A400290E3F /* SearchDrinkCVC.xib in Resources */,
 				87CD7853208B884100290E3F /* Main.storyboard in Resources */,
+				87CD7927208E313900290E3F /* OrdersTVC.xib in Resources */,
+				87CD78FD208D2F4F00290E3F /* DrinkCVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +527,146 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		563514BF55526F9EA206D5D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Drinkchop/Pods-Drinkchop-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Drinkchop/Pods-Drinkchop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7ABA32B319F87FAF07D988C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Drinkchop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF34548B57B65CAB8EF3826A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Drinkchop/Pods-Drinkchop-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
+				"${BUILT_PRODUCTS_DIR}/ENMBadgedBarButtonItem/ENMBadgedBarButtonItem.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleMapsDirections/GoogleMapsDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JHSpinner/JHSpinner.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ENMBadgedBarButtonItem.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleMapsDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JHSpinner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Drinkchop/Pods-Drinkchop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		87CD7846208B884100290E3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87CD7850208B884100290E3F /* ViewController.swift in Sources */,
+				87CD78FC208D2F4F00290E3F /* DrinkCVC.swift in Sources */,
+				87CD78E3208CDC4200290E3F /* CardsVC.swift in Sources */,
+				87CD7915208DB33B00290E3F /* BudgetVC.swift in Sources */,
+				87CD78D3208CC8A900290E3F /* MapViewController.swift in Sources */,
+				87CD7904208D37C900290E3F /* FavouritesFooterView.swift in Sources */,
+				87CD78EA208CE07C00290E3F /* CardCVC.swift in Sources */,
+				87CD78E6208CDCFC00290E3F /* AddCardCVC.swift in Sources */,
+				87CD7900208D2F6A00290E3F /* HappyHourCVC.swift in Sources */,
+				87CD78C4208CAEC300290E3F /* Manager.swift in Sources */,
+				87CD78DA208CC8EA00290E3F /* KYEmbedDrawerControllerSegue.swift in Sources */,
+				87CD7908208D37D700290E3F /* FavouritesHeaderView.swift in Sources */,
+				87CD7926208E313900290E3F /* OrdersTVC.swift in Sources */,
+				87CD790C208D977600290E3F /* HyveDrinkCVC.swift in Sources */,
+				87CD78C8208CB19F00290E3F /* SigninVC.swift in Sources */,
+				87CD7918208DC6A400290E3F /* SearchDrinkCVC.swift in Sources */,
+				87CD78CA208CB1A700290E3F /* SignupVC.swift in Sources */,
+				87CD791D208DD30100290E3F /* SelectedBarVC.swift in Sources */,
+				87CD78F3208D1E6000290E3F /* MyAccountVC.swift in Sources */,
+				87CD7920208DF42200290E3F /* EventsCVC.swift in Sources */,
+				87CD78DE208CCDC800290E3F /* Custom Functions.swift in Sources */,
+				87CD78F9208D2F3F00290E3F /* FavouritesVC.swift in Sources */,
 				87CD784E208B884100290E3F /* AppDelegate.swift in Sources */,
+				87CD78EF208D0C1600290E3F /* CoverVC.swift in Sources */,
+				87CD78E1208CD35B00290E3F /* MenuView.swift in Sources */,
+				87CD78BF208CAEA900290E3F /* Helper.swift in Sources */,
+				87CD78D1208CB8B000290E3F /* ForgotVC.swift in Sources */,
+				87CD78D9208CC8EA00290E3F /* KYDrawerController.swift in Sources */,
+				87CD78C0208CAEA900290E3F /* Extensions.swift in Sources */,
+				87CD7913208DAEB400290E3F /* AllergyVC.swift in Sources */,
+				87CD78D8208CC8EA00290E3F /* KYEmbedMainControllerSegue.swift in Sources */,
+				87CD78C1208CAEA900290E3F /* AlamofireRequestFetch.swift in Sources */,
+				87CD7911208DA6A900290E3F /* PasswordVC.swift in Sources */,
+				87CD7923208DF74800290E3F /* EventsVC.swift in Sources */,
+				87CD78F1208D153C00290E3F /* SelectedCardVC.swift in Sources */,
+				87CD78CF208CB67E00290E3F /* TextFieldValidator.m in Sources */,
+				87CD78C6208CB19600290E3F /* SplashVC.swift in Sources */,
+				87CD790F208D994B00290E3F /* HyveVC.swift in Sources */,
+				87CD7929208E31EC00290E3F /* MyOrdersVC.swift in Sources */,
+				87CD78F6208D2AA600290E3F /* AccountCVC.swift in Sources */,
+				87CD78DD208CCDC800290E3F /* Maps.swift in Sources */,
+				87CD78ED208CE5E500290E3F /* SettingsVC.swift in Sources */,
+				87CD791B208DCA2800290E3F /* FindVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,17 +837,22 @@
 		};
 		87CD7873208B884200290E3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81CB308D64586AF041792CD1 /* Pods-Drinkchop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CKB7CVX257;
 				INFOPLIST_FILE = Drinkchop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DEViOS.Drinkchop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Drinkchop/TextField Validator/Drinkchop-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -446,17 +860,21 @@
 		};
 		87CD7874208B884200290E3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D234F315892DE583B434BE9 /* Pods-Drinkchop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CKB7CVX257;
 				INFOPLIST_FILE = Drinkchop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DEViOS.Drinkchop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Drinkchop/TextField Validator/Drinkchop-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
