@@ -40,7 +40,7 @@ class AlamofireRequestFetch {
         let url = (self.baseUrl+subUrl).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         print(url)
         
-        getRequest = Alamofire.request(url!, method: method, parameters: parameters, encoding: JSONEncoding.default)
+        getRequest = Alamofire.request(url!, method: method, parameters: parameters, encoding: URLEncoding.default)
             .responseString(completionHandler: { (result:DataResponse<String>) in
                 completionHandler(result)
             })
@@ -51,7 +51,7 @@ class AlamofireRequestFetch {
         let url = (self.baseUrl+subUrl).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         print(url)
         
-        getRequest = Alamofire.request(url!, method: method, parameters: parameters, encoding: JSONEncoding.default)
+        getRequest = Alamofire.request(url!, method: method, parameters: parameters, encoding: URLEncoding.default)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 print(response)

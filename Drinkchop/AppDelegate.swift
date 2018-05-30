@@ -22,16 +22,35 @@ import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+import GoogleSignIn
+import FBSDKLoginKit
 
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+
+    fileprivate var dataWhenDeviceIsSuspended:Bool = false
+    fileprivate var isNotificationTapped:Bool = false
+    fileprivate var fcmUserInfo:[String:Any] = [:]
+    
     var window: UIWindow?
 
-    let mapsKey = "AIzaSyDE4XiiL3LXOBzSz4wvg-ni98bXEXp0JhQ"
-    let directionsKey = "AIzaSyAeuNhmQ-S0ooczHpduDYLNvoD5hPPzc5A"
+    let googleClientID = "791927086780-mue5c4gcjm8ml6hu7qc51u5qe1prlb2b.apps.googleusercontent.com"
+    
+    let mapsKey = "AIzaSyDSiGUk3XbcaXjpq0C3IcG9I94NBzgRPvk"
+    let directionsKey = "AIzaSyDvkMCRWfMr5y76ORRW2bFvHa-HJM8gJlg"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        IQKeyboardManager.sharedManager().enable = true
+        
+        
+        GIDSignIn.sharedInstance().clientID = googleClientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         
         application.statusBarStyle = .lightContent
         
@@ -39,20 +58,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey(mapsKey)
         GoogleMapsDirections.provide(apiKey: directionsKey)
         
-        registerForPushNotifications()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.tokenRefreshNotification),
                                                name: .InstanceIDTokenRefresh,
                                                object: nil)
+        registerForPushNotifications()
         if let notificationData = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [String:Any] {
-            //fcmUserInfo = notificationData
+            fcmUserInfo = notificationData
             setupNotificationServices(userInfo: notificationData)
         }
-        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        guard let settingsData = UserDefaults.standard.data(forKey: settingsDefaultsID) else {
+            print("settings not found..")
+            return true
+        }
+        guard let settings = try? decoder.decode(Settings.self, from: settingsData) else {
+            return true
+        }
+        Settings.iSettings = settings
         return true
     }
     
+    private func application(application: UIApplication,
+                     openURL url: URL, options: [String: AnyObject]) -> Bool {
+        if url.absoluteString.contains("1736503889764137") {
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication.rawValue] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation.rawValue])
+        }
+         let GSigninHandle = GIDSignIn.sharedInstance().handle(url as URL?,
+                                                    sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication.rawValue] as? String,
+                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation.rawValue])
+        return GSigninHandle
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "ToggleAuthUINotification"),
+                object: user,
+                userInfo: ["statusText": "Signed in user:\n\(fullName ?? "")"])
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "ToggleAuthUINotification"),
+            object: nil,
+            userInfo: ["statusText": "User has disconnected."])
+    }
+    
     func registerForPushNotifications() {
+        
+        FirebaseApp.configure()
         
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
@@ -64,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 completionHandler: {_, _ in })
             
             // For iOS 10 data message (sent via FCM)
-            Messaging.messaging().remoteMessageDelegate = self
+            Messaging.messaging().delegate = self
             
         } else {
             let settings: UIUserNotificationSettings =
@@ -102,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // [START refresh_token]
     
     func saveFCMToken(token: String) {
-        UserDefaults.standard.set(token, forKey: "FCM Token")
+        UserDefaults.standard.set(token, forKey: fcmTokenDefaultsID)
     }
     
     @objc func tokenRefreshNotification(_ notification: Notification) {
@@ -145,20 +217,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // [START connect_on_active]
     func applicationDidBecomeActive(_ application: UIApplication) {
-//        if dataWhenDeviceIsSuspended {
-//            if let window = self.window {
-//                if let controller = window.rootViewController as? UINavigationController {
-//                    setupNotificationServices(userInfo: fcmUserInfo)
-//                    //print(controller.visibleViewController)
-//                }
-//            }
-//        }
+        if dataWhenDeviceIsSuspended {
+            if let window = self.window {
+                if let controller = window.rootViewController as? UINavigationController {
+                    setupNotificationServices(userInfo: fcmUserInfo)
+                    //print(controller.visibleViewController)
+                }
+            }
+        }
         connectToFcm()
     }
     // [END connect_on_active]
     // [START disconnect_from_fcm]
     func applicationDidEnterBackground(_ application: UIApplication) {
-        //dataWhenDeviceIsSuspended = false
+        dataWhenDeviceIsSuspended = false
         Messaging.messaging().shouldEstablishDirectChannel = false
         print("Disconnected from FCM.")
     }
@@ -186,15 +258,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
+    func checkForNotificationFire(data: [String:Any]) {
+        if let window = self.window {
+            if let controller = window.rootViewController as? UINavigationController {
+                setupNotificationServices(userInfo: fcmUserInfo)
+                NotificationsUtil.fireNotification(data: fcmUserInfo)
+            }
+        }
+    }
+    
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-       // dataWhenDeviceIsSuspended = false
         let userInfo = notification.request.content.userInfo
-        //fcmUserInfo = userInfo as! [String : Any]
         // Print message ID.
+        dataWhenDeviceIsSuspended = false
+        fcmUserInfo = userInfo as! [String : Any]
+        fcmUserInfo["isNotificationTapped"] = false
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
@@ -202,9 +284,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         print(userInfo)
         if UIApplication.shared.applicationState == .active {
-            //registerForPushNotifications()
-            setupNotificationServices(userInfo: userInfo as! [String : Any])
-            
+            checkForNotificationFire(data: fcmUserInfo)
         } else if UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive  {
             
             
@@ -226,14 +306,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-       // dataWhenDeviceIsSuspended = true
-        //fcmUserInfo = userInfo as! [String:Any]
-        //setupNotificationServices(userInfo: userInfo as! [String : Any])
-        // Print message ID.
+        dataWhenDeviceIsSuspended = true
+        fcmUserInfo = userInfo as! [String:Any]
+        fcmUserInfo["isNotificationTapped"] = true
+        checkForNotificationFire(data: fcmUserInfo)
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        
         completionHandler()
     }
 }

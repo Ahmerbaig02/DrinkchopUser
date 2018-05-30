@@ -55,6 +55,22 @@ class ForgotVC: UIViewController {
         sender.leftViewMode = UITextFieldViewMode.always
     }
     
+    func forgotPasswordFromManager() {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        let type = self.emailTF.isSelected ? "phone" : "password"
+        Manager.forgotPasswordOnServer(email: emailTF.text!,type: type) { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                print(success)
+                self!.showToast(message: "Email sent")
+                _ = self!.navigationController?.popViewController(animated: true)
+            } else {
+                self!.showToast(message: "Error sending email. Please try again...")
+                print("error forgot password email sent..")
+            }
+        }
+    }
+    
     @IBAction func forgotUsernameAction(_ sender: Any) {
         self.passwordForgotBtn.isSelected = false
         self.titleLbl.text = "Your username will be sent to you via email"
@@ -63,6 +79,10 @@ class ForgotVC: UIViewController {
     @IBAction func forgotPasswordAction(_ sender: Any) {
         self.usernameForgotBtn.isSelected = false
         self.titleLbl.text = "Your password will be sent to you via email"
+    }
+    
+    @IBAction func submitAction(_ sender: Any) {
+        self.forgotPasswordFromManager()
     }
     
     deinit {

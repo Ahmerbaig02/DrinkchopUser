@@ -10,6 +10,7 @@ import UIKit
 
 class HyveVC: UIViewController {
 
+    @IBOutlet var priceLbl: UILabel!
     @IBOutlet var readyDrinkView: UIView!
     @IBOutlet var readyDrinkImgView: UIImageView!
     @IBOutlet var readyDrinkBtn: UIButton!
@@ -19,18 +20,37 @@ class HyveVC: UIViewController {
     @IBOutlet var drinkWillReadyImgView: UIImageView!
     @IBOutlet var willReadyInfoLbl: UILabel!
     
+    @IBOutlet var drinkNameLbl: UILabel!
     @IBOutlet var descriptionTV: UITextView!
     @IBOutlet var ingredientsLbl: UILabel!
     @IBOutlet var quantityLbl: UILabel!
+    @IBOutlet var percentAlcoholLbl: UILabel!
     @IBOutlet var hyveImgView: UIImageView!
     @IBOutlet var priceCollectionView: UICollectionView!
+    
+    @IBOutlet var saveBtn: UIButton!
+    
+    var selectedDrinkData:Drink!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerCells()
+        
         setupDrinkView(v: drinkWillReadyView)
         setupDrinkView(v: readyDrinkView)
+        
+        setDataInViews()
+        
+        checkFavFromManager()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let quantity = (self.quantityLbl.text as NSString?)!.integerValue
+        let cost = (self.selectedDrinkData.drinkCost as NSString?)!.integerValue
+        priceLbl.text = "Price: $\(cost*quantity)"
     }
     
     override func viewWillLayoutSubviews() {
@@ -53,13 +73,20 @@ class HyveVC: UIViewController {
         drinkWillReadyView.layer.shadowOffset = CGSize(width: 5.0, height: 15.0)
         drinkWillReadyView.layer.shadowRadius = 10.0
         drinkWillReadyView.layer.shadowOpacity = 0.5
-        
+    }
+    
+    func setDataInViews() {
+        self.drinkNameLbl.text = self.selectedDrinkData.drinkName ?? ""
+        self.hyveImgView.pin_setImage(from: URL(string: self.selectedDrinkData.drinkPicture ?? ""))
+        self.descriptionTV.text = self.selectedDrinkData.drinkDescription ?? ""
+        self.ingredientsLbl.text = self.selectedDrinkData.drinkIngredients ?? ""
+        self.percentAlcoholLbl.text = "\(self.selectedDrinkData.drinkAlcohal ?? "0")% Alcohol"
+        self.priceCollectionView.reloadData()
     }
     
     func registerCells() {
         let cellNib = UINib(nibName: "HyveDrinkCVC", bundle: nil)
         priceCollectionView.register(cellNib, forCellWithReuseIdentifier: HyveDrinkCellID)
-        
     }
     
     func showHideReadyDrinkView(show: Bool) {
@@ -80,7 +107,6 @@ class HyveVC: UIViewController {
             } else {
                 self.drinkWillReadyView.alpha = 0
             }
-            
         }
     }
     
@@ -91,46 +117,115 @@ class HyveVC: UIViewController {
         v.alpha = 0
     }
     
-    @IBAction func buyAction(_ sender: Any) {
-        if arc4random()%2 == 0 {
-            showHideReadyDrinkView(show: true)
-        } else {
-            showHideWillReadyDrinkView(show: true)
+    func checkFavFromManager() {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        Manager.checkFavoritesOnServer(item: self.selectedDrinkData.drinkId! ,barId: self.selectedDrinkData.barId!, type: "drink") { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                print(success)
+                self!.saveBtn.tintColor = appTintColor
+            } else {
+                self!.saveBtn.tintColor = .darkGray
+            }
+            self!.saveBtn.setImage(#imageLiteral(resourceName: "ic_favorite"), for: .normal)
         }
+    }
+    
+    func setFavFromManager(check: Int) {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        Manager.saveFavoritesOnServer(itemId: self.selectedDrinkData.drinkId!, check: check, barId: self.selectedDrinkData.barId!, type: "drink") { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                if check == 1 {
+                    print(success)
+                    self!.showToast(message: "Added to favourites...")
+                    self!.saveBtn.tintColor = appTintColor
+                } else {
+                    self!.showToast(message: "Removed from favourites...")
+                    self!.saveBtn.tintColor = .darkGray
+                }
+                self!.saveBtn.setImage(#imageLiteral(resourceName: "ic_favorite"), for: .normal)
+            } else {
+                self!.showToast(message: "Error saving favourites. Please try again...")
+                print("error save favourite")
+            }
+        }
+    }
+    
+    func addNewDrinkToCart(drinksData: [Drink]) {
+        var drinks = drinksData
+        self.selectedDrinkData.userId = DrinkUser.iUser.userId
+        self.selectedDrinkData.quantity = self.quantityLbl.text!
+        drinks.append(self.selectedDrinkData)
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        guard let data = try? encoder.encode(drinks) else {
+            self.showToast(message: "Alert: Not Checked In, Please Checkin to confirm!")
+            return
+        }
+        UserDefaults.standard.set(data, forKey: CartDefaultsID)
+        UserDefaults.standard.synchronize()
+        self.showToast(message: "Drink Added To Cart...")
+    }
+    
+    func saveOrderData() {
+        guard let drinksData = UserDefaults.standard.data(forKey: CartDefaultsID) else {
+            addNewDrinkToCart(drinksData: [])
+            return
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        guard let drinks = try? decoder.decode([Drink].self, from: drinksData) else {
+            addNewDrinkToCart(drinksData: [])
+            return
+        }
+        addNewDrinkToCart(drinksData: drinks)
+    }
+    
+    func checkForCheckinFromManager() {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        Manager.checkforCheckinOnServer(userId: "1", barId: self.selectedDrinkData.barId!) { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                print("success: ", success)
+                self!.saveOrderData()
+            } else {
+                self!.showToast(message: "Alert: Not Checked In, Please Checkin to confirm!")
+                print("Alert: Not Enough Room, Bar is Full!")
+            }
+        }
+    }
+    
+    @IBAction func buyAction(_ sender: Any) {
+//        if arc4random()%2 == 0 {
+//            showHideReadyDrinkView(show: true)
+//        } else {
+//            showHideWillReadyDrinkView(show: true)
+//        }
+        checkForCheckinFromManager()
     }
     
     @IBAction func minusAction(_ sender: Any) {
         var count = (quantityLbl.text as NSString?)!.integerValue
         count = count - 1
         quantityLbl.text = String(count < 0 ? 0 : count)
+        let quantity = (count < 0) ? 0 : count
+        let cost = (self.selectedDrinkData.drinkCost as NSString?)!.integerValue
+        priceLbl.text = "Price: $\(cost*quantity)"
     }
     
     @IBAction func plusAction(_ sender: Any) {
         var count = (quantityLbl.text as NSString?)!.integerValue
         count = count + 1
         quantityLbl.text = String(count)
-    }
-    
-    
-    @IBAction func fbAction(_ sender: Any) {
-        
-    }
-    
-    @IBAction func twitterAction(_ sender: Any) {
-        
-    }
-    
-    @IBAction func googleAction(_ sender: Any) {
-        
-    }
-    
-    @IBAction func saveAction(_ sender: Any) {
-        
+        let cost = (self.selectedDrinkData.drinkCost as NSString?)!.integerValue
+        priceLbl.text = "Price: $\(cost*count)"
     }
     
     @IBAction func favAction(_ sender: Any) {
-        
+        setFavFromManager(check: (saveBtn.tintColor == appTintColor) ? 0 : 1)
     }
+    
     //
     @IBAction func readyDrinkAction(_ sender: Any) {
         showHideReadyDrinkView(show: false)
@@ -156,17 +251,24 @@ class HyveVC: UIViewController {
 extension HyveVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.selectedDrinkData.extras?.count ?? 0
+    }
+    
+    func configureCell(cell: HyveDrinkCVC, index: Int) {
+        let selectedExtra = self.selectedDrinkData.extras![index]
+        cell.nameLbl.text = selectedExtra.extraName ?? ""
+        cell.priceLbl.text = "+$\(selectedExtra.extraCost ?? "0")"
+        cell.selectedImgView.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HyveDrinkCellID, for: indexPath) as! HyveDrinkCVC
-        cell.priceLbl.text = "+$\(arc4random() % 100)"
+        configureCell(cell: cell, index: indexPath.row)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return getCellHeaderSize(Width: self.view.frame.width/4, aspectRatio: 75/75, padding: 20)
+        return getCellHeaderSize(Width: self.view.frame.width/4, aspectRatio: 75/100, padding: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

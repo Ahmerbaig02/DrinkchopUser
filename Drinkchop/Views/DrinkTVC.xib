@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="DrinkTVC" customModule="Drinkchop" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l8Q-RB-zbn">
+                        <rect key="frame" x="8" y="8" width="43.5" height="43.5"/>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="l8Q-RB-zbn" secondAttribute="height" multiplier="1:1" id="czY-rC-dp8"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharaab" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77y-5p-6u8">
+                        <rect key="frame" x="59.5" y="8" width="56" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="1pN-1N-MLp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcy-yF-aX0">
+                        <rect key="frame" x="59" y="35" width="26.5" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="XtF-d6-4RE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iz1-GA-vNv">
+                        <rect key="frame" x="280" y="21" width="30" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.99215686270000003" green="0.5568627451" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_warning_18pt" translatesAutoresizingMaskIntoConstraints="NO" id="j7M-64-FTx">
+                        <rect key="frame" x="93.5" y="35.5" width="16" height="16"/>
+                        <color key="tintColor" red="0.93725490199999995" green="0.13725490200000001" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="7yA-3Z-2ex"/>
+                            <constraint firstAttribute="width" secondItem="j7M-64-FTx" secondAttribute="height" multiplier="1:1" id="RuF-hh-lYh"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="l8Q-RB-zbn" secondAttribute="bottom" constant="8" id="2zi-av-F0B"/>
+                    <constraint firstItem="Rcy-yF-aX0" firstAttribute="leading" secondItem="l8Q-RB-zbn" secondAttribute="trailing" constant="8" id="6uP-bk-KcD"/>
+                    <constraint firstItem="l8Q-RB-zbn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="A1h-Ov-4jj"/>
+                    <constraint firstItem="Rcy-yF-aX0" firstAttribute="bottom" secondItem="l8Q-RB-zbn" secondAttribute="bottom" id="Etz-WK-xP1"/>
+                    <constraint firstItem="Iz1-GA-vNv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GbJ-qz-k45"/>
+                    <constraint firstItem="j7M-64-FTx" firstAttribute="leading" secondItem="Rcy-yF-aX0" secondAttribute="trailing" constant="8" id="Qfr-6V-Dp5"/>
+                    <constraint firstItem="l8Q-RB-zbn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="V7V-LN-J29"/>
+                    <constraint firstItem="77y-5p-6u8" firstAttribute="leading" secondItem="l8Q-RB-zbn" secondAttribute="trailing" constant="8" id="azF-Rh-IMo"/>
+                    <constraint firstAttribute="trailing" secondItem="Iz1-GA-vNv" secondAttribute="trailing" constant="10" id="rIU-ag-ipr"/>
+                    <constraint firstAttribute="bottom" secondItem="j7M-64-FTx" secondAttribute="bottom" constant="8" id="rLq-KO-Fjs"/>
+                    <constraint firstItem="77y-5p-6u8" firstAttribute="top" secondItem="l8Q-RB-zbn" secondAttribute="top" id="tiJ-UZ-mCp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="alcoholLbl" destination="Rcy-yF-aX0" id="7mo-p0-qD3"/>
+                <outlet property="drinkImgView" destination="l8Q-RB-zbn" id="K0O-u3-bgn"/>
+                <outlet property="nameLbl" destination="77y-5p-6u8" id="5a4-gX-qN4"/>
+                <outlet property="priceLbl" destination="Iz1-GA-vNv" id="ZKd-q3-2iW"/>
+                <outlet property="warningImgView" destination="j7M-64-FTx" id="C69-iN-Esv"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_warning_18pt" width="18" height="18"/>
+    </resources>
+</document>

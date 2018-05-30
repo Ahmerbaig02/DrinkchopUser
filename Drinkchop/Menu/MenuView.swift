@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FBSDKLoginKit
+import swiftScan
 
 class MenuView: UIViewController {
     
@@ -16,28 +19,29 @@ class MenuView: UIViewController {
     
     var MyAccountDetails:[String:Any]!
     
-    let titles:[String] = ["Cards","Cover","Notifications", "Settings","My Account","Contact Us","My Favourite","The Hyve","Find","My Orders"]
+    let titles:[String] = ["Find","Events/HappyHours","Notifications","My Favourite","My Orders","Cover","Scan QRCode","Settings","My Account","Help","Signout"]
     
     
-    let textAligments:[NSTextAlignment] = [.left,.left,.left,.left,.left,.left,.left,.left,.left,.left]
+    var ScanController = LBXScanViewController()
     
-    let fontStyles:[UIFont] = [.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium)]
+    let textAligments:[NSTextAlignment] = [.left,.left,.left,.left,.left,.left,.left,.left,.left,.left,.left]
     
-    let menuImages:[UIImage?] = [#imageLiteral(resourceName: "ic_credit_card"),#imageLiteral(resourceName: "ic_work"),#imageLiteral(resourceName: "ic_notification"),#imageLiteral(resourceName: "ic_settings"),#imageLiteral(resourceName: "ic_info_outline_white"),#imageLiteral(resourceName: "ic_phone"),#imageLiteral(resourceName: "ic_favorite"),#imageLiteral(resourceName: "ic_about"),#imageLiteral(resourceName: "ic_search"),#imageLiteral(resourceName: "ic_shopping_cart")]
-    let BGColors:[UIColor] = [.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear]
+    let fontStyles:[UIFont] = [.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium),.systemFont(ofSize: 15, weight: UIFont.Weight.medium)]
+    
+    let menuImages:[UIImage?] = [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
+    let BGColors:[UIColor] = [.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear,.clear]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         menuTable.estimatedRowHeight = 54.0
-        Name.text = "Ahmer Baig"
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        Name.text = DrinkUser.iUser.userName?.removingPercentEncoding ?? ""
+        userImage.pin_setImage(from: URL(string: DrinkUser.iUser.userImage ?? ""))
     }
     
     override func viewWillLayoutSubviews() {
@@ -56,75 +60,16 @@ class MenuView: UIViewController {
     }
     
     func closeMenu() {
-        
         if let drawerController = parent as? KYDrawerController {
             drawerController.setDrawerState(.closed, animated: true)
         }
     }
     
-    func DialNumber(phoneNumber:String) {
-        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.openURL(url)
-        }
-    }
-    
-    // funcion to check for Rider Later and Rider Now Offline Calling
-    
-    func MakeACall(_ phoneString:String ) {
-        
-        let MakeACallURL:URL = URL(string: phoneString)!
-        
-        let application = UIApplication.shared
-        
-        if application.canOpenURL(MakeACallURL){
-            application.openURL(MakeACallURL)
-        }
-        else{
-            print("Can't open Native App to make a call")
-        }
-    }
-    
-    // function to book ride offline
-    func showContactSheet() {
-        
-        let alertCall = UIAlertController(title: "Contact Us!", message: "Below are our contact numbers. Select One to Call our Customer Service", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        var phoneString:String = "tel:"
-        
-        alertCall.addAction(UIAlertAction(title: "Dial +15164660066", style: UIAlertActionStyle.destructive, handler: { [weak self] (UIAlertAction) in
-            phoneString += "+15164660066"
-            self!.MakeACall(phoneString)
-        }) )
-        
-        alertCall.addAction(UIAlertAction(title: "Dial +15164661166", style: UIAlertActionStyle.destructive, handler: { [weak self] (UIAlertAction) in
-            phoneString += "+15164661166"
-            self!.MakeACall(phoneString)
-        }) )
-        
-        alertCall.addAction(UIAlertAction(title: "Dial +15164667766", style: UIAlertActionStyle.destructive, handler: { [weak self](UIAlertAction) in
-            phoneString += "+15164667766"
-            self!.MakeACall(phoneString)
-        }) )
-        
-        alertCall.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad) {
-            
-            if let currentPopoverpresentioncontroller = alertCall.popoverPresentationController {
-                currentPopoverpresentioncontroller.sourceView = self.view
-                currentPopoverpresentioncontroller.sourceRect = self.view.bounds
-                currentPopoverpresentioncontroller.permittedArrowDirections = UIPopoverArrowDirection.down
-                present(alertCall, animated: true, completion: nil)
-            }
-        }
-        else{
-            present(alertCall, animated: true, completion: nil)
-        }
-        
-    }
-    
     func doLogout() {
         UserDefaults.standard.set(false, forKey: isLoggedInDefaultID)
+        UserDefaults.standard.set(nil, forKey: settingsDefaultsID)
+        GIDSignIn.sharedInstance().signOut()
+        FBSDKLoginManager().logOut()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -139,9 +84,27 @@ class MenuView: UIViewController {
         self.present(confirm, animated: true, completion: nil)
     }
     
-    @IBAction func SignoutAction(_ sender: Any) {
-        showLogoutAlert()
+    func showAlert(title: String, Message: String) {
+        let confirm = UIAlertController(title: title, message: Message, preferredStyle: .alert)
+        confirm.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(confirm, animated: true, completion: nil)
     }
+    
+    func getTableServiceFromManager(tableID: String) {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        Manager.getTableServiceFromServer(userId: DrinkUser.iUser.userId!, tableID: tableID) { [weak self] (success) in
+            Manager.hideLoader()
+            self!.ScanController.startScan()
+            if let success = success {
+                print("Success:", success)
+                self!.ScanController.showToast(message: "User Registered...")
+            } else {
+                self!.ScanController.showToast(message: "User Not Registered...")
+                
+            }
+        }
+    }
+    
     
     deinit {
         print("Menu View deinit")
@@ -184,12 +147,45 @@ extension MenuView: UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if titles[indexPath.row] == "Contact Us" {
-            showContactSheet()
+        if titles[indexPath.row] == "Scan QRCode"  {
+            let controller = self.ScanController
+            controller.drawScanView()
+            controller.scanStyle = LBXScanViewStyle()
+            controller.scanResultDelegate = self
+            if let scanView = controller.qRScanView {
+                let closeBtn = UIButton(frame: CGRect(x: 10, y: 20, width: 40 , height: 40))
+                closeBtn.getRounded(cornerRaius: 20)
+                closeBtn.backgroundColor = UIColor.darkGray.withAlphaComponent(0.8)
+                closeBtn.setImage(#imageLiteral(resourceName: "ic_clear_white"), for: .normal)
+                closeBtn.addTarget(self, action: #selector(dismissScanVC(_:)), for: .touchUpInside)
+                scanView.addSubview(closeBtn)
+                self.present(controller, animated: true) {
+                    controller.startScan()
+                }
+            }
+        } else if titles[indexPath.row] == "Signout" {
+            showLogoutAlert()
         } else {
             ID = (titles[indexPath.row] == " ") ? "" : titles[indexPath.row]
             closeMenu()
+        }
+    }
+    
+    @objc func dismissScanVC(_ sender: UIButton) {
+        let controller = self.ScanController
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension MenuView: LBXScanViewControllerDelegate {
+    
+    func scanFinished(scanResult: LBXScanResult, error: String?) {
+        if let err = error {
+            print("Error: ", err)
+        } else {
+            print("Result:", scanResult.strScanned ?? "")
+            getTableServiceFromManager(tableID: scanResult.strScanned ?? "")
         }
     }
     

@@ -21,7 +21,6 @@ var ID:String = ""
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
-    
     @IBOutlet var SearchLocationBtn:UIButton!
     @IBOutlet var gpsBtn: UIButton!
     @IBOutlet var bottomView:UIView!
@@ -36,7 +35,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     let reachability = Reachability()!
     var ActivityIndicator = UIActivityIndicatorView()
     
-    let apikey = "AIzaSyAeuNhmQ-S0ooczHpduDYLNvoD5hPPzc5A"
+    let apikey = "AIzaSyDvkMCRWfMr5y76ORRW2bFvHa-HJM8gJlg"
     
     var getData:AlamofireRequestFetch!
     var getGeoCodedData:AlamofireRequestFetch!
@@ -46,13 +45,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var stripeToken:STPToken!
 
     
+    var isForBarLocation:Bool = true
+    var barLat:CLLocationDegrees = 0.0
+    var barLng:CLLocationDegrees = 0.0
+    
     var barMarkers:[GMSMarker] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        updateFCMTokenFromManager()
+        
         setupMap()
+        
         SearchLocationBtn.titleLabel?.numberOfLines = 2
         
         getData = AlamofireRequestFetch(baseUrl: DrinkChopBaseURL)
@@ -65,14 +73,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             dropPinZoomIn(Latitude: Lat, Longitude: Long)
         }
         
-        
         // current location marker tint Color
-        
         gpsBtn.getRounded(cornerRaius: 2.0)
     }
     
     override func viewWillLayoutSubviews() {
-        
         super.viewWillLayoutSubviews()
         
         gpsBtn.getRounded(cornerRaius: gpsBtn.frame.width / 2)
@@ -82,7 +87,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         super.viewWillAppear(animated)
         
         UIApplication.shared.isIdleTimerDisabled = true
-        
+        NotificationsUtil.setSuperView(navController: self.navigationController!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged),name: Notification.Name.reachabilityChanged,object: reachability)
         do {
@@ -91,7 +96,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }catch {
             print("could not start reachability notifier")
         }
-        //performLoad()
+        
         dropPinZoomIn(Latitude: Lat, Longitude: Long)
         enableScreenEdgepanGestureDrawer(value: true)
         
@@ -104,6 +109,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        NotificationsUtil.removeFromSuperView()
+        
         UIApplication.shared.isIdleTimerDisabled = false
         
         reachability.stopNotifier()
@@ -115,12 +122,43 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? FindVC {
+            controller.lat = self.Lat
+            controller.lng = self.Long
+        }
         
+        if let controller = segue.destination as? EventsHappyPageVC {
+            controller.lat = self.Lat
+            controller.lng = self.Long
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    func saveUserDataAndLogin() {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        guard let data = try? encoder.encode(DrinkUser.iUser) else {return}
+        
+        UserDefaults.standard.set(data, forKey: UserProfileDefaultsID)
+    }
+    
+    func updateFCMTokenFromManager() {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        Manager.updateTokenOnServer { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                DrinkUser.iUser.registrationIds = UserDefaults.standard.string(forKey: fcmTokenDefaultsID)
+                self!.saveUserDataAndLogin()
+                self!.showToast(message: "Token Updated")
+            } else {
+                self!.showToast(message: "Token update failed")
+                //err
+            }
+        }
     }
     
     // func to handle the tap in order to hide the keyboard
@@ -139,6 +177,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         view.addSubview(MapView)
         view.sendSubview(toBack: MapView)
         MapView.isMyLocationEnabled = true
+        MapView.settings.compassButton = true
         MapView.delegate = self
     }
     
@@ -212,7 +251,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func GPSUpdateLocation() {
-        
         //DidFinishUpdatingLocation = false
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -221,16 +259,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
     }
     
-    func setRegionOnMap(Latitude:CLLocationDegrees,Longitude:CLLocationDegrees){
-        
-        // RidermapView.clear()
-        
-        //  DidFinishUpdatingLocation = false
-        
+    func setRegionOnMap(Latitude:CLLocationDegrees,Longitude:CLLocationDegrees) {
         CATransaction.begin()
         CATransaction.setValue(0.75, forKey: kCATransactionAnimationDuration)
-        let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: Latitude, longitude: Longitude), zoom: zoomLevel)
-        MapView.animate(to: camera)
+        if isForBarLocation {
+            self.getRouteForLocation()
+            self.isForBarLocation = false
+        } else {
+            let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: Latitude, longitude: Longitude), zoom: zoomLevel)
+            MapView.animate(to: camera)
+        }
         CATransaction.commit()
     }
     
@@ -288,15 +326,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         routeLine.strokeWidth = 4.0
         routeLine.strokeColor = appTintColor
         routeLine.map = MapView
-        zoomLevel = 16.5
+        zoomLevel = 12.5
         self.setRegionOnMap(Latitude: Lat, Longitude: Long)
     }
     
     
     func getRouteForLocation() {
         let origin = GoogleMapsDirections.Place.coordinate(coordinate: GoogleMapsService.LocationCoordinate2D.init(latitude: GoogleMapsService.LocationDegrees(Lat), longitude: GoogleMapsService.LocationDegrees(Long)))
-        let dropLat = Lat
-        let dropLng = Long
+        let dropLat = self.barLat
+        let dropLng = self.barLng
         let destination = GoogleMapsDirections.Place.coordinate(coordinate: GoogleMapsService.LocationCoordinate2D.init(latitude: GoogleMapsService.LocationDegrees(dropLat), longitude: GoogleMapsService.LocationDegrees(dropLng)))
         
         GoogleMapsDirections.direction(fromOrigin: origin, toDestination: destination) { [weak self] (response, error) -> Void in
@@ -323,33 +361,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func sortAndGetNearestDriverTime() {
-        
-            let origin = GoogleMapsDirections.Place.coordinate(coordinate: GoogleMapsService.LocationCoordinate2D.init(latitude: GoogleMapsService.LocationDegrees(Lat), longitude: GoogleMapsService.LocationDegrees(Long)))
-            let destination = GoogleMapsDirections.Place.coordinate(coordinate: GoogleMapsService.LocationCoordinate2D.init(latitude: GoogleMapsService.LocationDegrees(Lat), longitude: GoogleMapsService.LocationDegrees(Long)))
-            
-            GoogleMapsDirections.direction(fromOrigin: origin, toDestination: destination) { [weak self] (response, error) -> Void in
-                // Check Status Code
-                guard response?.status == GoogleMapsDirections.StatusCode.ok else {
-                    // Status Code is Not OK
-                    print((response?.errorMessage))
-                    
-                    return
-                }
-                
-                // Use .result or .geocodedWaypoints to access response details
-                // response will have same structure as what Google Maps Directions API returns
-                
-                //debugPrint("it has \(response?.routes)")
-                UIView.animate(withDuration: 0.55) {
-                    let routesData = (response?.routes.first)!
-                    if let steps = routesData.legs.first?.steps {
-                        
-                    }
-                }
-            }
     }
     
     func getDistanceBtwLocations(pickupLocation: CLLocation, destinationLocation: CLLocation) -> Double {
@@ -385,8 +396,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
     }
     
-    deinit{
-        
+    deinit {
         MapView.clear()
         MapView.removeFromSuperview()
         MapView.delegate = nil

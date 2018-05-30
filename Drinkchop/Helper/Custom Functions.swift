@@ -21,10 +21,29 @@ func setupLocalNotification(userInfo: [String:Any]) {
     UIApplication.shared.scheduleLocalNotification(notification)
 }
 
-func convertJSONToString(json: [String:Any]) -> String? {
+func convertJSONToString(json: Any) -> String? {
     guard let dataFromJson = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) else { return nil }
     let dataStr = String(data: dataFromJson, encoding: .utf8)
     return dataStr
+}
+
+func makeShortReadableTime(str: String) -> String {
+    let timeComps = str.components(separatedBy: ":")
+    if timeComps[0] > "12" {
+        let convertedTime = (timeComps[0] as NSString).integerValue%12
+        return "\((convertedTime == 0) ? 0 : convertedTime) :\(timeComps[1]) PM"
+    } else {
+        return "\(timeComps[0]):\(timeComps[1]) AM"
+    }
+}
+
+func timeDifference(t1: String, t2: String) -> String {
+    let time1Comps = t1.components(separatedBy: ":")
+    let time2Comps = t2.components(separatedBy: ":")
+    let hours = (time1Comps[0] as NSString).integerValue - (time2Comps[0] as NSString).integerValue
+    let mins = (time1Comps[1] as NSString).integerValue - (time2Comps[1] as NSString).integerValue
+    
+    return ((hours > 0) ? "\(hours) hr(s) " : "") + ((mins > 0) ? "\(mins) min(s) " : "")
 }
 
 func convertStringToJSON(jsonString: String) -> Any? {

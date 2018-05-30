@@ -8,6 +8,9 @@ target 'Drinkchop' do
     # Pods for Drinkchop
     pod 'DLRadioButton', '~> 1.4'
     
+    pod 'GoogleSignIn'
+    pod 'FBSDKLoginKit'
+
     pod 'GoogleMaps'
     pod 'GooglePlaces'
     pod 'GooglePlacePicker'
@@ -28,5 +31,7 @@ target 'Drinkchop' do
     pod 'Whisper'
     
     pod 'ENMBadgedBarButtonItem'
+    
+    pod 'swiftScan', '~> 1.1.2'
     
 end

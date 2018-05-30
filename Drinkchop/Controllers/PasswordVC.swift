@@ -36,7 +36,29 @@ class PasswordVC: UIViewController {
         
     }
     
+    func resetFields() {
+        self.newPswdTF.text = ""
+        self.currentPswdTF.text = ""
+        self.confirmPswdTF.text = ""
+    }
+    
+    func changePasswordFromManager() {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        let id = (DrinkUser.iUser.userId as NSString?)!.integerValue
+        Manager.changePasswordOnServer(id: id, password: newPswdTF.text!) { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                self!.resetFields()
+                self!.showToast(message: "Password changed...")
+            } else {
+                self!.showToast(message: "Error changing password. Please try again...")
+                //err
+            }
+        }
+    }
+    
     @IBAction func pswdBtnAction(_ sender: Any) {
+        changePasswordFromManager()
     }
     
     deinit {

@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HyveDrinkCVC" customModule="Drinkchop" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="HyveDrinkCVC" customModule="DrinkChopAdmin" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -29,31 +29,54 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="yoW-zd-g1K">
-                        <rect key="frame" x="12.5" y="54" width="50" height="21"/>
+                        <rect key="frame" x="12" y="58" width="51" height="17"/>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.51372549020000002" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="yoW-zd-g1K" secondAttribute="height" multiplier="3:1" id="NPR-EJ-Fz2"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3o-tg-faf">
+                        <rect key="frame" x="8" y="54" width="59" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_done_128" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-Rj-yF8">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="dtq-Wx-tv8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="07f-IP-B1W"/>
-                <constraint firstItem="yoW-zd-g1K" firstAttribute="trailing" secondItem="dtq-Wx-tv8" secondAttribute="trailing" id="E6T-Qy-QPd"/>
+                <constraint firstAttribute="bottom" secondItem="ytD-Rj-yF8" secondAttribute="bottom" id="Cws-8t-IoS"/>
+                <constraint firstItem="yoW-zd-g1K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="G1w-u6-cuG"/>
                 <constraint firstItem="dtq-Wx-tv8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="HHS-Fs-oLT"/>
-                <constraint firstItem="yoW-zd-g1K" firstAttribute="leading" secondItem="dtq-Wx-tv8" secondAttribute="leading" id="RzI-JL-1oC"/>
                 <constraint firstAttribute="bottom" secondItem="yoW-zd-g1K" secondAttribute="bottom" id="WJ4-AZ-FJk"/>
-                <constraint firstItem="yoW-zd-g1K" firstAttribute="top" secondItem="dtq-Wx-tv8" secondAttribute="bottom" constant="4" id="f6X-kZ-Cyt"/>
+                <constraint firstAttribute="trailing" secondItem="ytD-Rj-yF8" secondAttribute="trailing" id="Wb6-yL-c6V"/>
+                <constraint firstItem="ytD-Rj-yF8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Xas-Ld-OPc"/>
+                <constraint firstItem="h3o-tg-faf" firstAttribute="top" secondItem="dtq-Wx-tv8" secondAttribute="bottom" constant="4" id="eVo-Jk-Cbs"/>
+                <constraint firstItem="ytD-Rj-yF8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="h9S-cO-g0Q"/>
+                <constraint firstItem="yoW-zd-g1K" firstAttribute="top" secondItem="h3o-tg-faf" secondAttribute="bottom" constant="4" id="iP1-a8-hfN"/>
+                <constraint firstAttribute="trailing" secondItem="h3o-tg-faf" secondAttribute="trailing" constant="8" id="qvO-fX-Peu"/>
+                <constraint firstItem="h3o-tg-faf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="u52-ep-QmC"/>
+                <constraint firstAttribute="trailing" secondItem="yoW-zd-g1K" secondAttribute="trailing" constant="12" id="wJX-gu-Ogb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="drinkImgView" destination="dtq-Wx-tv8" id="2hH-T6-5xa"/>
+                <outlet property="nameLbl" destination="h3o-tg-faf" id="rvZ-4K-Ajr"/>
                 <outlet property="priceLbl" destination="yoW-zd-g1K" id="cN6-qh-YuJ"/>
+                <outlet property="selectedImgView" destination="ytD-Rj-yF8" id="S1k-sD-OnY"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="33.5" y="52.5"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="barImg" width="275" height="183"/>
+        <image name="ic_done_128" width="128" height="128"/>
     </resources>
 </document>

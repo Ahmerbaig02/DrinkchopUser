@@ -8,6 +8,8 @@
 
 import UIKit
 
+import swiftScan
+
 class SplashVC: UIViewController {
 
     override func viewDidLoad() {
@@ -24,7 +26,28 @@ class SplashVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.performSegue(withIdentifier: loginSegueID, sender: nil)
+        checkIsUserLoggedIn()
+    }
+    
+    func checkIsUserLoggedIn() {
+        let loggedIn = UserDefaults.standard.bool(forKey: isLoggedInDefaultID)
+        if loggedIn {
+            if let data = UserDefaults.standard.data(forKey: UserProfileDefaultsID) {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                guard let userData = try? decoder.decode(DrinkUser.self, from: data) else {
+                    self.performSegue(withIdentifier: loginSegueID, sender: nil)
+                    return
+                }
+                DrinkUser.iUser = userData
+                DrinkUser.iUser.userName = DrinkUser.iUser.userName?.removingPercentEncoding
+                self.performSegue(withIdentifier: LoggedInSegueID, sender: nil)
+            } else {
+                self.performSegue(withIdentifier: loginSegueID, sender: nil)
+            }
+        } else {
+            self.performSegue(withIdentifier: loginSegueID, sender: nil)
+        }
     }
     
     deinit {

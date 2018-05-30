@@ -10,8 +10,11 @@ import UIKit
 
 class HyveDrinkCVC: UICollectionViewCell {
 
+    @IBOutlet var selectedImgView: UIImageView!
+    @IBOutlet var nameLbl: UILabel!
     @IBOutlet var priceLbl: UILabel!
     @IBOutlet var drinkImgView: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -16,6 +16,7 @@ class AllergyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        allergyTF.text = DrinkUser.iUser.userAllergies ?? ""
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,8 +31,32 @@ class AllergyVC: UIViewController {
         saveBtn.getRounded(cornerRaius: saveBtn.frame.height/2)
     }
     
+    func saveUserData() {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        guard let data = try? encoder.encode(DrinkUser.iUser) else {return}
+        
+        UserDefaults.standard.set(data, forKey: UserProfileDefaultsID)
+    }
+    
+    func saveAllergyFromManager() {
+        Manager.showLoader(text: "Please Wait...", view: self.view)
+        Manager.saveAllergyOnServer(id: DrinkUser.iUser.userId ?? "", allergy: allergyTF.text!) { [weak self] (success) in
+            Manager.hideLoader()
+            if let success = success {
+                DrinkUser.iUser.userAllergies = self!.allergyTF.text!
+                self!.saveUserData()
+                _ = self!.navigationController?.popViewController(animated: true)
+                self!.showToast(message: "Allergies updated.")
+            } else {
+                self!.showToast(message: "Error updating allergies. Please try again...")
+                //err
+            }
+        }
+    }
+    
     @IBAction func saveBtnAction(_ sender: Any) {
-        _ = self.navigationController?.popViewController(animated: true)
+        self.saveAllergyFromManager()
         
     }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class DrinkCVC: UICollectionViewCell {
 
+    @IBOutlet var drinkImgView: UIImageView!
     @IBOutlet var nameLbl:UILabel!
     @IBOutlet var priceLbl:UILabel!
     

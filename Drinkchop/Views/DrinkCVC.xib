@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,23 +14,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DrinkCVC" customModule="Drinkchop" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hdg-3Z-uu1">
-                        <rect key="frame" x="20" y="0.0" width="260" height="30"/>
+                        <rect key="frame" x="60" y="0.0" width="240" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Orange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snK-kf-0hH">
-                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMC-sc-ype">
-                                <rect key="frame" x="132.5" y="0.0" width="127.5" height="30"/>
+                                <rect key="frame" x="122.5" y="0.0" width="117.5" height="60"/>
                                 <string key="text">10% alcohol	$20</string>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,20 +38,32 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6fM-IZ-hhd">
+                        <rect key="frame" x="8" y="8" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6fM-IZ-hhd" secondAttribute="height" multiplier="1:1" id="OZ0-ve-OTB"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="hdg-3Z-uu1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9oI-dI-9wo"/>
+                <constraint firstItem="6fM-IZ-hhd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Jdd-7y-hhR"/>
+                <constraint firstItem="hdg-3Z-uu1" firstAttribute="leading" secondItem="6fM-IZ-hhd" secondAttribute="trailing" constant="8" id="VZi-Wz-sSy"/>
                 <constraint firstAttribute="trailing" secondItem="hdg-3Z-uu1" secondAttribute="trailing" constant="20" id="dVZ-Dd-NNG"/>
                 <constraint firstAttribute="bottom" secondItem="hdg-3Z-uu1" secondAttribute="bottom" id="g3n-wN-tmN"/>
-                <constraint firstItem="hdg-3Z-uu1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="w6L-f0-Sa7"/>
+                <constraint firstItem="6fM-IZ-hhd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="itJ-Hl-gej"/>
+                <constraint firstAttribute="bottom" secondItem="6fM-IZ-hhd" secondAttribute="bottom" constant="8" id="r21-fU-dya"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="300" height="88"/>
             <connections>
+                <outlet property="drinkImgView" destination="6fM-IZ-hhd" id="4vc-b9-3iP"/>
                 <outlet property="nameLbl" destination="snK-kf-0hH" id="oY8-K0-85R"/>
                 <outlet property="priceLbl" destination="dMC-sc-ype" id="ofm-UY-lLv"/>
             </connections>
+            <point key="canvasLocation" x="34" y="123"/>
         </collectionViewCell>
     </objects>
 </document>

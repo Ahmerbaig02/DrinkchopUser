@@ -8,11 +8,19 @@
 
 import UIKit
 
+
+protocol cardCVCDelegate: class {
+    func changeCardStatus(index: Int)
+}
+
+
 class CardCVC: UICollectionViewCell {
 
     @IBOutlet var enableBtn: UIButton!
     @IBOutlet var ownerLbl: UILabel!
     @IBOutlet var cardInfoLbl: UILabel!
+    
+    weak var delegate: cardCVCDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +39,7 @@ class CardCVC: UICollectionViewCell {
     }
     
     @IBAction func enableCardAction(_ sender: Any) {
-        if self.enableBtn.currentImage == nil {
-            self.enableBtn.setImage(#imageLiteral(resourceName: "ic_done_18pt"), for: .normal)
-        } else {
-            self.enableBtn.setImage(nil, for: .normal)
-        }
+        delegate?.changeCardStatus(index: self.tag)
     }
     
     deinit {
